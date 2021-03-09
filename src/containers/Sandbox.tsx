@@ -1,0 +1,68 @@
+import React, { useRef, useState } from "react"
+import { Stage, Layer } from "react-konva"
+import { Vector2d } from "konva/types/types"
+
+import { CONTROLLER_ROTATION, CONTROLLER_SIZE, STAGE_HEIGHT, STAGE_WIDTH } from "../helpers/const"
+
+import { download } from "../helpers/utils"
+
+import IconEdit from "../icons/IconEdit"
+import IconSave from "../icons/IconSave"
+
+import Figure from "../components/Figure"
+import Button, { ButtonColor, ButtonSize } from "../components/Button"
+
+import Controller from "./Controller"
+
+interface Props {
+  file?: string
+}
+
+const Sandbox: React.FC<Props> = ({ file }: Props) => {
+  const stageRef = useRef<any>(null)
+
+  const [rotation, setRotation] = useState<number>(CONTROLLER_ROTATION)
+  const [scale, setScale] = useState<Vector2d>({ x: CONTROLLER_SIZE, y: CONTROLLER_SIZE })
+
+  const onScale = (scale: number) => {
+    setScale({
+      x: scale,
+      y: scale,
+    })
+  }
+
+  const onEdit = () => {}
+
+  const onSave = () => {
+    if (stageRef?.current) {
+      download(stageRef.current.toDataURL())
+    }
+  }
+
+  return (
+    <>
+      <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef}>
+        <Layer>
+          {file ? <Figure fit src={file} /> : null}
+          <Figure draggable scale={scale} rotation={rotation} src="/static/stripe.svg" />
+        </Layer>
+      </Stage>
+
+      {true ? (
+        <Controller rotation={rotation} scale={scale.x} onRotation={setRotation} onScale={onScale} onClose={onEdit} />
+      ) : null}
+
+      <Button $color={ButtonColor.Black} $size={ButtonSize.Lg} onClick={onEdit}>
+        <IconEdit />
+        Edit effect
+      </Button>
+
+      <Button $color={ButtonColor.Red} $size={ButtonSize.Lg} onClick={onSave}>
+        <IconSave />
+        Save photo
+      </Button>
+    </>
+  )
+}
+
+export default Sandbox
