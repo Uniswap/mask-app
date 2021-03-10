@@ -18,13 +18,12 @@ const SvgIcon = styled.svg<SvgIconProps>`
   display: inline-block;
   vertical-align: middle;
   margin-right: ${rem(10)};
+  transition: opacity ${(props) => props.theme.transition.base};
 
   ~ span {
     display: inline-block;
     vertical-align: middle;
   }
-
-  transition: opacity ${(props) => props.theme.transition.base};
 
   path {
     transition: fill ${(props) => props.theme.transition.base};

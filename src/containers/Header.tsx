@@ -16,7 +16,7 @@ const Wrapper = styled.header`
   align-items: center;
   justify-content: center;
 
-  @media all and (max-width: 580px) {
+  @media all and (max-width: 767px) {
     padding: 12px 0;
   }
 `
@@ -37,7 +37,14 @@ const Logo = styled.div`
     display: block;
   }
 
-  @media all and (max-width: 580px) {
+  @media all and (max-width: 767px) {
+    span {
+      display: none;
+    }
+
+    img {
+      margin-bottom: 0;
+    }
   }
 `
 

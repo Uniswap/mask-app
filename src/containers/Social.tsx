@@ -34,16 +34,31 @@ const Wrapper = styled.div`
       }
     }
   }
+
+  @media all and (max-width: 480px) {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `
 
 const SocialLink = styled.a<LinkProps>`
   margin: 0 ${rem(5)};
+
+  @media all and (max-width: 767px) {
+    margin: 0 8px;
+  }
 `
 
 const Copy = styled.div`
   color: ${(props) => props.theme.colors.black};
   margin-bottom: ${rem(16)};
   font-weight: ${(props) => props.theme.fontWeight.semibold};
+
+  @media all and (max-width: 480px) {
+    margin-bottom: 0;
+  }
 `
 
 const List = styled.div`

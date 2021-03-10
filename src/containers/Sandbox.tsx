@@ -162,7 +162,8 @@ const Actions = styled.div`
   width: 100%;
   display: flex;
 
-  @media all and (min-width: 1025px) {
+  @media all and (max-width: 480px) {
+    position: static;
   }
 `
 
@@ -172,6 +173,10 @@ const Relative = styled.div`
 
   ${Button} {
     width: 100%;
+  }
+
+  @media all and (max-width: 480px) {
+    position: static;
   }
 `
 

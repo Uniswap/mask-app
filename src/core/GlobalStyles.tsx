@@ -9,8 +9,20 @@ const GlobalStyles = createGlobalStyle`
       font-size: 14px
     }
 
-    @media all and (max-width: 580px) {
-      font-size: 11px
+    @media all and (max-width: 840px) {
+      font-size: 12px
+    }
+
+    @media all and (max-width: 480px) {
+      font-size: 10px
+    }
+
+    @media all and (min-width: 1400px) {
+      font-size: 20px;
+    }
+
+    @media all and (min-width: 1600px) {
+      font-size: 21px;
     }
   }
 
@@ -52,6 +64,11 @@ const GlobalStyles = createGlobalStyle`
     font-weight: ${(props) => props.theme.fontWeight.black};
     font-size: ${(props) => rem(props.theme.fontSize.h1)};
     line-height: 1;
+
+    @media all and (max-width: 767px) {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
   }
 
   * {
