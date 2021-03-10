@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components"
 import theme from "../helpers/theme"
 
 import GlobalStyles from "./GlobalStyles"
-import GlobalFonts from "./GlobalFont.js"
+import GlobalFonts from "./GlobalFonts"
 
 interface Props {
   children: JSX.Element | JSX.Element[]
