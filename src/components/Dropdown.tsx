@@ -59,11 +59,17 @@ const Control = styled.div`
   transition: color ${(props) => props.theme.transition.base};
   cursor: pointer;
 
+  svg {
+    opacity: 0.24;
+  }
+
   &:active,
   &:hover {
     color: ${(props) => props.theme.colors.white};
 
     svg {
+      opacity: 1;
+
       path {
         fill: ${(props) => props.theme.colors.primary};
       }

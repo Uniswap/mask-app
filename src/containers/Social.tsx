@@ -18,11 +18,19 @@ const Wrapper = styled.div`
   a {
     color: inherit;
 
+    svg {
+      opacity: 0.24;
+    }
+
     &:hover {
       color: ${(props) => props.theme.colors.primary};
 
-      svg path {
-        fill: ${(props) => props.theme.colors.primary};
+      svg {
+        opacity: 1;
+
+        path {
+          fill: ${(props) => props.theme.colors.primary};
+        }
       }
     }
   }

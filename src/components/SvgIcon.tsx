@@ -24,6 +24,8 @@ const SvgIcon = styled.svg<SvgIconProps>`
     vertical-align: middle;
   }
 
+  transition: opacity ${(props) => props.theme.transition.base};
+
   path {
     transition: fill ${(props) => props.theme.transition.base};
   }
