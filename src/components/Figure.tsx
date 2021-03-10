@@ -19,12 +19,22 @@ interface Props {
   draggable?: boolean
 }
 
-const Figure: React.FC<Props> = ({ fit, src, rotation, scale, draggable, ...rest }: Props) => {
+const Figure: React.FC<Props> = ({ fit, src, rotation, scale, draggable, offsetX, offsetY, ...rest }: Props) => {
   const meta = useImage(src as string)
   const image = head(meta) as HTMLImageElement
   const config = fit ? scaleFigure(image) : rest
 
-  return <Image image={image} draggable={draggable} scale={scale} rotation={rotation} {...config} />
+  return (
+    <Image
+      image={image}
+      draggable={draggable}
+      scale={scale}
+      rotation={rotation}
+      offsetX={offsetX}
+      offsetY={offsetY}
+      {...config}
+    />
+  )
 }
 
 export default Figure

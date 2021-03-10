@@ -2,7 +2,15 @@ import React, { useRef, useState } from "react"
 import { Stage, Layer } from "react-konva"
 import { Vector2d } from "konva/types/types"
 
-import { CONTROLLER_ROTATION, CONTROLLER_SIZE, STAGE_HEIGHT, STAGE_WIDTH } from "../helpers/const"
+import {
+  CONTROLLER_ROTATION,
+  CONTROLLER_SIZE,
+  MASK_HEIGHT,
+  MASK_WIDTH,
+  SCALE_FACTOR,
+  STAGE_HEIGHT,
+  STAGE_WIDTH,
+} from "../helpers/const"
 
 import { download } from "../helpers/utils"
 
@@ -44,13 +52,18 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
       <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef}>
         <Layer>
           {file ? <Figure fit src={file} /> : null}
-          <Figure draggable scale={scale} rotation={rotation} src="/static/stripe.svg" />
+          <Figure
+            draggable
+            scale={scale}
+            rotation={rotation}
+            src="/static/stripe.svg"
+            offsetX={MASK_WIDTH}
+            offsetY={MASK_HEIGHT / SCALE_FACTOR}
+          />
         </Layer>
       </Stage>
 
-      {true ? (
-        <Controller rotation={rotation} scale={scale.x} onRotation={setRotation} onScale={onScale} onClose={onEdit} />
-      ) : null}
+      <Controller rotation={rotation} scale={scale.x} onRotation={setRotation} onScale={onScale} onClose={onEdit} />
 
       <Button $color={ButtonColor.Black} $size={ButtonSize.Lg} onClick={onEdit}>
         <IconEdit />
