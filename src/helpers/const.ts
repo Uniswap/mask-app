@@ -14,5 +14,5 @@ export const CONTROLLER_SIZE_MIN = 0
 export const CONTROLLER_SIZE_MAX = 2
 export const CONTROLLER_SIZE_STEP = 0.01
 
-export const MASK_WIDTH = 150
-export const MASK_HEIGHT = 80
+export const MASK_WIDTH = 208
+export const MASK_HEIGHT = 55

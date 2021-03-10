@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
 import { Stage, Layer } from "react-konva"
 import { Vector2d } from "konva/types/types"
+import { not } from "ramda"
 
 import {
   CONTROLLER_ROTATION,
@@ -29,6 +30,7 @@ interface Props {
 const Sandbox: React.FC<Props> = ({ file }: Props) => {
   const stageRef = useRef<any>(null)
 
+  const [edit, setEdit] = useState<boolean>(false)
   const [rotation, setRotation] = useState<number>(CONTROLLER_ROTATION)
   const [scale, setScale] = useState<Vector2d>({ x: CONTROLLER_SIZE, y: CONTROLLER_SIZE })
 
@@ -39,7 +41,9 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
     })
   }
 
-  const onEdit = () => {}
+  const onEdit = () => {
+    setEdit(not(edit))
+  }
 
   const onSave = () => {
     if (stageRef?.current) {
@@ -57,13 +61,15 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
             scale={scale}
             rotation={rotation}
             src="/static/stripe.svg"
-            offsetX={MASK_WIDTH}
+            offsetX={MASK_WIDTH / SCALE_FACTOR}
             offsetY={MASK_HEIGHT / SCALE_FACTOR}
           />
         </Layer>
       </Stage>
 
-      <Controller rotation={rotation} scale={scale.x} onRotation={setRotation} onScale={onScale} onClose={onEdit} />
+      {edit ? (
+        <Controller rotation={rotation} scale={scale.x} onRotation={setRotation} onScale={onScale} onClose={onEdit} />
+      ) : null}
 
       <Button $color={ButtonColor.Black} $size={ButtonSize.Lg} onClick={onEdit}>
         <IconEdit />
