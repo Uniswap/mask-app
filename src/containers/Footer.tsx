@@ -5,6 +5,21 @@ import { rem } from "polished"
 
 import Social from "./Social"
 
+const Footer: React.FC = () => {
+  return (
+    <Wrapper>
+      <Grid>
+        <Social />
+        <Disclaimer>
+          f2pool & stakefish take privacy very seriously. The “OPTIMISIM MASK” app is provided for fun and convenience.
+          We never store photos, and do not transmit any data besides an anonymous identifier containing no personal
+          information. We have also made the source code available in the event you would like to review it.
+        </Disclaimer>
+      </Grid>
+    </Wrapper>
+  )
+}
+
 const Wrapper = styled.footer`
   padding: ${rem(50)} 0;
   bottom: 0;
@@ -34,20 +49,5 @@ const Disclaimer = styled.div`
   margin-left: auto;
   margin-right: auto;
 `
-
-const Footer: React.FC = () => {
-  return (
-    <Wrapper>
-      <Grid>
-        <Social />
-        <Disclaimer>
-          f2pool & stakefish take privacy very seriously. The “OPTIMISIM MASK” app is provided for fun and convenience.
-          We never store photos, and do not transmit any data besides an anonymous identifier containing no personal
-          information. We have also made the source code available in the event you would like to review it.
-        </Disclaimer>
-      </Grid>
-    </Wrapper>
-  )
-}
 
 export default Footer

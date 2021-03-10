@@ -8,10 +8,34 @@ import Sandbox from "./Sandbox"
 import Card from "../components/Card"
 import Section from "../components/Section"
 
+const Playground: React.FC = () => {
+  const [file, setFile] = useState<string | undefined>()
+
+  const onDrop = ([file]: File[]) => {
+    setFile(URL.createObjectURL(file))
+  }
+
+  return (
+    <Section>
+      <Grid>
+        <Wrapper>
+          <Card>
+            <Sandbox file={file} />
+          </Card>
+          <Card>
+            <Info onDrop={onDrop} />
+          </Card>
+        </Wrapper>
+      </Grid>
+    </Section>
+  )
+}
+
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
   height: ${rem(520)};
+  transform: translate3d(0, 0, 0);
   background-color: ${(props) => props.theme.colors.odd};
 
   ${Card} {
@@ -55,28 +79,5 @@ const Wrapper = styled.div`
     }
   }
 `
-
-const Playground: React.FC = () => {
-  const [file, setFile] = useState<string | undefined>()
-
-  const onDrop = ([file]: File[]) => {
-    setFile(URL.createObjectURL(file))
-  }
-
-  return (
-    <Section>
-      <Grid>
-        <Wrapper>
-          <Card>
-            <Sandbox file={file} />
-          </Card>
-          <Card>
-            <Info onDrop={onDrop} />
-          </Card>
-        </Wrapper>
-      </Grid>
-    </Section>
-  )
-}
 
 export default Playground

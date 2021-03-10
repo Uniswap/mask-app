@@ -1,7 +1,7 @@
-import styled, { createGlobalStyle } from "styled-components"
+import { createGlobalStyle, keyframes } from "styled-components"
 import { normalize, rem } from "polished"
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   ${normalize()};
 
   html {
@@ -17,12 +17,12 @@ const GlobalStyles = createGlobalStyle`
       font-size: 10px
     }
 
-    @media all and (min-width: 1400px) {
+    @media all and (min-width: 1441px) {
       font-size: 20px;
     }
 
     @media all and (min-width: 1600px) {
-      font-size: 21px;
+      font-size: 22px;
     }
   }
 
@@ -77,11 +77,22 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
-export const FluidGrid = styled.div`
-  @media all and (min-width: 768px) {
-    padding-left: 8% !important;
-    padding-right: 8% !important;
+export const slideUp = keyframes`
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
   }
 `
 
-export default GlobalStyles
+export const slideUpPopover = keyframes`
+  0% {
+    transform: translate3d(-50%, 20px, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+`

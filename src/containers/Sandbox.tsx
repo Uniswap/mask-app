@@ -17,8 +17,9 @@ import {
 
 import { download, detectFace, loadModels } from "../helpers/utils"
 
-import { IconEdit, IconSave } from "../icons"
+import { slideUp } from "../core/GlobalStyles"
 
+import { IconEdit, IconSave } from "../icons"
 import Figure from "../components/Figure"
 import Button, { ButtonColor, ButtonSize } from "../components/Button"
 
@@ -133,6 +134,8 @@ const Wrapper = styled.div<WrapperProps>`
   background-image: ${(props) => `url(${props.preview})` || "none"};
   background-size: cover;
   background-position: center;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
 
   &:before {
     content: "";
@@ -151,6 +154,11 @@ const Wrapper = styled.div<WrapperProps>`
     width: 100% !important;
     height: 100% !important;
     object-fit: cover;
+  }
+
+  @media all and (max-width: 480px) {
+    overflow: visible;
+    transform: none;
   }
 `
 
@@ -174,8 +182,20 @@ const Relative = styled.div`
     width: 100%;
   }
 
+  > ${Button} {
+    transform: translate3d(0, 100%, 0);
+    animation: 0.3s ${slideUp} forwards 1s ease;
+  }
+
+  &:last-child {
+    > ${Button} {
+      animation-delay: 1.1s;
+    }
+  }
+
   @media all and (max-width: 480px) {
     position: static;
+    overflow: hidden;
   }
 `
 

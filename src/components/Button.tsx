@@ -89,8 +89,8 @@ const Button = styled.button<ButtonProps>`
     ${(props) =>
     props.$color === ButtonColor.Gray &&
     css`
-      background-color: #f3f3f3
-      color: ${props.theme.colors.white};
+      background-color: #f3f3f3;
+      color: ${props.theme.colors.dark};
 
       svg path {
         fill: ${props.theme.colors.white};

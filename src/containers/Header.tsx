@@ -3,51 +3,6 @@ import { Grid } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 import { rem } from "polished"
 
-/**
- * Types
- */
-
-const Wrapper = styled.header`
-  padding: ${rem(70)} 0;
-  letter-spacing: 0;
-  line-height: 1;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media all and (max-width: 767px) {
-    padding: 12px 0;
-  }
-`
-
-const Logo = styled.div`
-  font-size: ${(props) => rem(props.theme.fontSize.base)};
-  font-weight: ${(props) => props.theme.fontWeight.black};
-  text-align: center;
-  font-style: italic;
-  text-transform: uppercase;
-
-  img {
-    margin-bottom: ${rem(8)};
-    user-select: none;
-  }
-
-  span {
-    display: block;
-  }
-
-  @media all and (max-width: 767px) {
-    span {
-      display: none;
-    }
-
-    img {
-      margin-bottom: 0;
-    }
-  }
-`
-
 const Header: React.FC = () => {
   return (
     <Wrapper>
@@ -60,5 +15,57 @@ const Header: React.FC = () => {
     </Wrapper>
   )
 }
+
+const Wrapper = styled.header`
+  padding: ${rem(70)} 0;
+  letter-spacing: 0;
+  line-height: 1;
+  width: 100%;
+  text-align: center;
+
+  @media all and (max-width: 767px) {
+    padding: 12px 0;
+  }
+`
+
+const Logo = styled.div`
+  font-size: ${(props) => rem(props.theme.fontSize.base)};
+  font-weight: ${(props) => props.theme.fontWeight.black};
+  text-align: center;
+  font-style: italic;
+  text-transform: uppercase;
+  cursor: default;
+  display: inline-block;
+
+  img {
+    margin-bottom: ${rem(8)};
+    user-select: none;
+    transition: transform 0.3s cubic-bezier(0.2, 1.64, 0.41, 0.2);
+  }
+
+  span {
+    display: block;
+  }
+
+  @media all and (min-width: 768px) {
+    &:hover {
+      img {
+        transform: translate3d(0, -10px, 0);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+  }
+
+  @media all and (max-width: 767px) {
+    span {
+      display: none;
+    }
+
+    img {
+      margin-bottom: 0;
+      width: 22px;
+    }
+  }
+`
 
 export default Header

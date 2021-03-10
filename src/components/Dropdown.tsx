@@ -15,6 +15,25 @@ export interface DropdownProps {
   data: data[]
 }
 
+const Dropdown: React.FC<DropdownProps> = ({ title, data, ...props }: DropdownProps) => {
+  return (
+    <Wrapper {...props}>
+      <Control>{title}</Control>
+      <Menu>
+        <Inner>
+          {data.map((meta: data) => (
+            <li key={meta.name}>
+              <a href={meta.url} target="_blank" rel="noreferrer">
+                {meta.name}
+              </a>
+            </li>
+          ))}
+        </Inner>
+      </Menu>
+    </Wrapper>
+  )
+}
+
 const Menu = styled.div`
   position: absolute;
   top: 100%;
@@ -120,24 +139,5 @@ const Inner = styled.ul`
     }
   }
 `
-
-const Dropdown: React.FC<DropdownProps> = ({ title, data, ...props }: DropdownProps) => {
-  return (
-    <Wrapper {...props}>
-      <Control>{title}</Control>
-      <Menu>
-        <Inner>
-          {data.map((meta: any) => (
-            <li key={meta.name}>
-              <a href={meta.url} target="_blank" rel="noreferrer">
-                {meta.name}
-              </a>
-            </li>
-          ))}
-        </Inner>
-      </Menu>
-    </Wrapper>
-  )
-}
 
 export default Dropdown

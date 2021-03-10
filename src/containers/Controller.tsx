@@ -11,6 +11,8 @@ import {
   CONTROLLER_SIZE_STEP,
 } from "../helpers/const"
 
+import { slideUpPopover } from "../core/GlobalStyles"
+
 import Button, { ButtonColor, ButtonSize } from "../components/Button"
 
 interface Props {
@@ -83,8 +85,11 @@ const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colors.white};
   border: 1px solid ${(props) => props.theme.colors.white};
   width: ${rem(221)};
-  margin-bottom: ${rem(20)};
+  margin-bottom: ${rem(15)};
   z-index: 11;
+  transform: translate3d(0, 10px, 0);
+  animation: 0.3s ${slideUpPopover} forwards cubic-bezier(0.2, 1.64, 0.86, 0.86);
+  backface-visibility: visible;
 
   &:after {
     top: 100%;
@@ -114,6 +119,7 @@ const Wrapper = styled.div`
     height: ${rem(20)};
     background-color: transparent;
     cursor: pointer;
+    margin: 0;
 
     &:before {
       content: "";
@@ -123,7 +129,9 @@ const Wrapper = styled.div`
       left: 50%;
       top: 50%;
       z-index: -1;
-      transform: translate(-50%, -50%);
+      margin: 0;
+      transform: translate3d(-50%, -50%, 0);
+      backface-visibility: hidden;
       background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 212, 255, 0) 100%);
       transition: all ${(props) => props.theme.transition.base};
     }
@@ -161,15 +169,16 @@ const Wrapper = styled.div`
     width: 14px;
     height: 14px;
     outline: none;
-    border: solid ${rem(2)} ${(props) => props.theme.colors.dark};
+    border: 0;
+    box-shadow: 0 0 0 ${rem(2)} ${(props) => props.theme.colors.dark};
     background-color: ${(props) => props.theme.colors.white};
-    transition: border-color ${(props) => props.theme.transition.base};
+    transition: box-shadow ${(props) => props.theme.transition.base};
     cursor: pointer;
     z-index: 10;
 
     &:hover,
     &:active {
-      border-color: ${(props) => props.theme.colors.primary};
+      box-shadow: 0 0 0 ${rem(2)} ${(props) => props.theme.colors.primary};
 
       ~ [data-reach-slider-marker][data-orientation="horizontal"] {
         &:before {

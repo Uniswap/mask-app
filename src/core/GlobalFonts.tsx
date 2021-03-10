@@ -1,4 +1,4 @@
-const GlobalFonts = `
+export const GlobalFonts = `
   @font-face {
     font-family: 'Muli';
     font-style: normal;
@@ -68,5 +68,3 @@ const GlobalFonts = `
       url('/static/fonts/muli-blackitalic.ttf') format('truetype'); 
   }
 `
-
-export default GlobalFonts

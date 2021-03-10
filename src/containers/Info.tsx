@@ -25,7 +25,6 @@ const Info: React.FC<Props> = ({ onDrop }: Props) => {
             your photo, choose your mask, and download <br />
             or share with the Twitter button!
           </p>
-
           <Links>
             <a href="https://optimism.io/" target="_blank" rel="noreferrer">
               <IconInfo />
@@ -37,7 +36,6 @@ const Info: React.FC<Props> = ({ onDrop }: Props) => {
             </a>
           </Links>
           <Divider />
-
           <UploadWrapper>
             <div>
               <Button $color={ButtonColor.White} $size={ButtonSize.Lg} {...getRootProps()}>
