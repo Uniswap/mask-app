@@ -1,7 +1,7 @@
-import styled, { createGlobalStyle } from "styled-components"
-import { normalize, rem } from "polished"
+import styled, { createGlobalStyle } from "styled-components";
+import { normalize, rem } from "polished";
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   ${normalize()};
 
   html {
@@ -24,8 +24,8 @@ const GlobalStyles = createGlobalStyle`
     letter-spacing: normal;
     font-size: ${(props) => rem(props.theme.fontSize.base)};
     font-family: ${(props) => props.theme.font.base};
-    color: ${(props) => props.theme.colors.black};
-    background-color: ${(props) => props.theme.colors.white};
+    color: ${(props) => props.theme.colors.white};
+    background-color: ${(props) => props.theme.colors.secondary};
     direction: ltr;
     overscroll-behavior: none;
     -moz-osx-font-smoothing: grayscale;
@@ -47,24 +47,8 @@ const GlobalStyles = createGlobalStyle`
     margin-top: 0;
   }
 
-  h1 {
-    margin-bottom: ${rem(10)};
-    font-weight: ${(props) => props.theme.fontWeight.black};
-    font-size: ${(props) => rem(props.theme.fontSize.h1)};
-    line-height: 1;
-  }
-
   * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
   }
-`
-
-export const FluidGrid = styled.div`
-  @media all and (min-width: 768px) {
-    padding-left: 8% !important;
-    padding-right: 8% !important;
-  }
-`
-
-export default GlobalStyles
+`;

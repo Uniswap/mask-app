@@ -1,4 +1,4 @@
-const theme = {
+export const theme = {
     flexboxgrid: {
       // Defaults
       gridSize: 12, // columns
@@ -8,7 +8,7 @@ const theme = {
       container: {
         sm: 0, // rem
         md: 64, // rem
-        lg: 68, // rem
+        lg: 80.3, // rem
       },
       breakpoints: {
         xs: 0, // em
@@ -18,13 +18,13 @@ const theme = {
       },
     },
     font: {
-      base: "'Muli', sans-serif",
-      headings: "'Muli', sans-serif",
+      base: "'DM Sans', sans-serif",
+      headings: "'Monument', sans-serif",
     },
     fontSize: {
       base: 16,
-      lead: 18,
-      h1: 42,
+      lead: 24,
+      h1: 64,
       h2: 38,
       h3: 22,
       h4: 18,
@@ -43,10 +43,10 @@ const theme = {
       primary: "#ff0000",
       secondary: "#0F0F0F",
       tertiary: "#3F5FBF",
-      dark: "#252628",
+      dark: "#00030E",
       accent: "#fdebd1",
       gray: "#777B84",
-      black: "#0F0F0F",
+      black: "#000000",
       white: "#ffffff",
       odd: "#f7f7f7",
     },
@@ -55,4 +55,3 @@ const theme = {
     },
   };
   
-  export default theme

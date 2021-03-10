@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react"
 import { Stage, Layer } from "react-konva"
 import { Vector2d } from "konva/types/types"
 import { not } from "ramda"
+import styled from "styled-components"
+import { rem } from "polished"
 
 import {
   CONTROLLER_ROTATION,
@@ -16,8 +18,7 @@ import {
 
 import { download, detectFace, loadModels } from "../helpers/utils"
 
-import IconEdit from "../icons/IconEdit"
-import IconSave from "../icons/IconSave"
+import { IconEdit, IconSave } from "../icons"
 
 import Figure from "../components/Figure"
 import Button, { ButtonColor, ButtonSize } from "../components/Button"
@@ -73,7 +74,7 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
   }, [file])
 
   return (
-    <>
+    <Wrapper>
       <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef}>
         <Layer>
           {file ? <Figure fit src={file} /> : null}
@@ -94,17 +95,45 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
         <Controller rotation={rotation} scale={scale.x} onRotation={setRotation} onScale={onScale} onClose={onEdit} />
       ) : null}
 
-      <Button $color={ButtonColor.Black} $size={ButtonSize.Lg} onClick={onEdit}>
-        <IconEdit />
-        Edit effect
-      </Button>
+      <Actions>
+        <Button $color={ButtonColor.Black} $size={ButtonSize.Md} onClick={onEdit}>
+          <IconEdit />
+          Edit effect
+        </Button>
 
-      <Button $color={ButtonColor.Red} $size={ButtonSize.Lg} onClick={onSave}>
-        <IconSave />
-        Save photo
-      </Button>
-    </>
+        <Button $color={ButtonColor.Red} $size={ButtonSize.Md} onClick={onSave}>
+          <IconSave />
+          Save photo
+        </Button>
+      </Actions>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  position: relative;
+  height: 100%;
+  padding-bottom: ${rem(48)};
+
+  .konvajs-content,
+  canvas {
+    width: 100% !important;
+    object-fit: cover;
+  }
+`
+
+const Actions = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  ${Button} {
+    width: 50%;
+  }
+
+  @media all and (min-width: 1025px) {
+  }
+`
 
 export default Sandbox
