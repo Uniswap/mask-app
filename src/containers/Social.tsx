@@ -2,42 +2,66 @@ import React from "react"
 import styled from "styled-components"
 import { rem } from "polished"
 
-// interface LinkProps {
-//   href?: string
-//   target?: string
-// }
+import Dropdown from "../components/Dropdown"
+import { IconTwitter, IconTelegram, IconInstagram } from "../icons"
+
+interface LinkProps {
+  href?: string
+  target?: string
+}
 
 const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
+  margin-bottom: ${rem(30)};
   color: ${(props) => props.theme.colors.gray};
-
-  span {
-    margin: 0 ${rem(5)};
-  }
+  text-align: center;
 
   a {
     color: inherit;
 
-    &:hover {
-      color: ${(props) => props.theme.colors.white};
+    svg {
+      opacity: 0.24;
     }
-  }
 
-  @media all and (max-width: 915px) {
-    justify-content: center;
-    margin-bottom: 10px;
+    &:hover {
+      color: ${(props) => props.theme.colors.primary};
+
+      svg {
+        opacity: 1;
+
+        path {
+          fill: ${(props) => props.theme.colors.primary};
+        }
+      }
+    }
   }
 `
 
-// const SocialLink = styled.a<LinkProps>`
-//   margin: 0 ${rem(5)};
-// `
+const SocialLink = styled.a<LinkProps>`
+  margin: 0 ${rem(5)};
+`
+
+const Copy = styled.div`
+  color: ${(props) => props.theme.colors.black};
+  margin-bottom: ${rem(16)};
+  font-weight: ${(props) => props.theme.fontWeight.semibold};
+`
+
+const List = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    margin-right: 0;
+    width: ${rem(24)};
+    height: ${rem(24)};
+  }
+`
 
 const Social: React.FC = () => {
   return (
     <Wrapper>
-      <span>
+      <Copy>
         {"Powered by "}
         <a href="https://stake.fish/" target="_block">
           stakefish
@@ -46,20 +70,22 @@ const Social: React.FC = () => {
         <a href="https://www.f2pool.com/" target="_block">
           f2pool
         </a>
-      </span>
-      {/* <Dropdown
-        title={<SvgIcon iconKey="twitter" />}
-        data={[
-          { name: "f2pool", url: "https://twitter.com/f2pool_official" },
-          { name: "stakefish", url: "https://twitter.com/stakefish" },
-        ]}
-      />
-      <SocialLink href="https://t.me/stakefish" target="_block">
-        <SvgIcon iconKey="telegram" />
-      </SocialLink>
-      <SocialLink href="https://instagram.com/stakedotfish" target="_block">
-        <SvgIcon iconKey="instagram" />
-      </SocialLink> */}
+      </Copy>
+      <List>
+        <SocialLink href="https://t.me/stakefish" target="_block">
+          <IconTelegram />
+        </SocialLink>
+        <SocialLink href="https://instagram.com/stakedotfish" target="_block">
+          <IconInstagram />
+        </SocialLink>
+        <Dropdown
+          title={<IconTwitter />}
+          data={[
+            { name: "f2pool", url: "https://twitter.com/f2pool_official" },
+            { name: "stakefish", url: "https://twitter.com/stakefish" },
+          ]}
+        />
+      </List>
     </Wrapper>
   )
 }

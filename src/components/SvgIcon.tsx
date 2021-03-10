@@ -23,6 +23,12 @@ const SvgIcon = styled.svg<SvgIconProps>`
     display: inline-block;
     vertical-align: middle;
   }
+
+  transition: opacity ${(props) => props.theme.transition.base};
+
+  path {
+    transition: fill ${(props) => props.theme.transition.base};
+  }
 `
 
 export default SvgIcon

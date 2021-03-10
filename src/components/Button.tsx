@@ -81,6 +81,21 @@ const Button = styled.button<ButtonProps>`
       }
     `}
 
+    ${(props) =>
+    props.$color === ButtonColor.Gray &&
+    css`
+      background-color: #f3f3f3
+      color: ${props.theme.colors.white};
+
+      svg path {
+        fill: ${props.theme.colors.white};
+      }
+
+      &:hover {
+        background-color: #e5e5e5;
+      }
+    `}
+
   ${(props) =>
     props.$size === ButtonSize.Lg &&
     css`
@@ -89,6 +104,14 @@ const Button = styled.button<ButtonProps>`
       padding: ${rem(20)} ${rem(24)};
       font-size: ${rem(12)};
       font-weight: ${(props) => props.theme.fontWeight.extrabold};
+    `}
+
+  ${(props) =>
+    props.$size === ButtonSize.Xs &&
+    css`
+      padding: ${rem(8)} ${rem(16)};
+      font-size: ${rem(10)};
+      font-weight: ${(props) => props.theme.fontWeight.bold};
     `}
 `
 
