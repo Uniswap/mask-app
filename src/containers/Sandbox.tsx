@@ -28,6 +28,9 @@ import Controller from "./Controller"
 interface Props {
   file?: string
 }
+interface WrapperProps {
+  preview?: string
+}
 
 const Sandbox: React.FC<Props> = ({ file }: Props) => {
   const stageRef = useRef<any>(null)
@@ -74,15 +77,15 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
   }, [file])
 
   return (
-    <Wrapper>
+    <Wrapper preview={file}>
       <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef}>
         <Layer>
-          {file ? <Figure fit src={file} /> : null}
+          <Figure fit src={file || "/static/images/default.png"} />
           <Figure
             draggable
             scale={scale}
             rotation={rotation}
-            src="/static/stripe.svg"
+            src="/static/images/stripe.svg"
             x={coordinates?.x}
             y={coordinates?.y}
             offsetX={MASK_WIDTH / SCALE_FACTOR}
@@ -110,10 +113,25 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
   )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<WrapperProps>`
   position: relative;
   height: 100%;
   padding-bottom: ${rem(48)};
+  background-image: ${(props) => `url(${props.preview})` || "none"};
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(18px);
+  }
 
   .konvajs-content,
   canvas {
