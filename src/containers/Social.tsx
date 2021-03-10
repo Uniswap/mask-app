@@ -2,11 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { rem } from "polished"
 
-import { IconInstagram, IconTelegram, IconTwitter } from "../icons"
-
-/**
- * Types
- */
 interface LinkProps {
   href?: string
   target?: string
@@ -35,9 +30,9 @@ const Wrapper = styled.div`
   }
 `
 
-const SocialLink = styled.a<LinkProps>`
-  margin: 0 ${rem(5)};
-`
+// const SocialLink = styled.a<LinkProps>`
+//   margin: 0 ${rem(5)};
+// `
 
 const Social: React.FC = () => {
   return (
