@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react"
 import { Stage, Layer } from "react-konva"
 import { Vector2d } from "konva/types/types"
-import { isNil, not } from "ramda"
+import { not } from "ramda"
 import styled from "styled-components"
-import { rem } from "polished"
 
 import {
   CONTROLLER_ROTATION,
