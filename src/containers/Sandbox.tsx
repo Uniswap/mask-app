@@ -35,7 +35,10 @@ interface WrapperProps {
 const Sandbox: React.FC<Props> = ({ file }: Props) => {
   const stageRef = useRef<any>(null)
 
-  const [coordinates, setCoordinates] = useState<Vector2d>()
+  const [coordinates, setCoordinates] = useState<Vector2d>({
+    x: 250,
+    y: 170,
+  })
   const [edit, setEdit] = useState<boolean>(false)
   const [rotation, setRotation] = useState<number>(CONTROLLER_ROTATION)
   const [scale, setScale] = useState<Vector2d>({ x: CONTROLLER_SIZE, y: CONTROLLER_SIZE })
@@ -120,7 +123,6 @@ const Wrapper = styled.div<WrapperProps>`
   background-image: ${(props) => `url(${props.preview})` || "none"};
   background-size: cover;
   background-position: center;
-  overflow: hidden;
 
   &:before {
     content: "";
