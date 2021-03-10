@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { Stage, Layer } from "react-konva"
 import { Vector2d } from "konva/types/types"
-import { not } from "ramda"
+import { isNil, not } from "ramda"
 import styled from "styled-components"
 import { rem } from "polished"
 
@@ -81,7 +81,7 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
 
   return (
     <Wrapper preview={file}>
-      <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef}>
+      <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef} className="stage">
         <Layer>
           <Figure fit src={file || "/static/images/default.png"} />
           <Figure
@@ -97,21 +97,33 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
         </Layer>
       </Stage>
 
-      {edit ? (
-        <Controller rotation={rotation} scale={scale.x} onRotation={setRotation} onScale={onScale} onClose={onEdit} />
+      {file ? (
+        <Actions>
+          <Relative>
+            {edit ? (
+              <Controller
+                rotation={rotation}
+                scale={scale.x}
+                onRotation={setRotation}
+                onScale={onScale}
+                onClose={onEdit}
+              />
+            ) : null}
+
+            <Button $color={ButtonColor.Black} $size={ButtonSize.Md} onClick={onEdit}>
+              <IconEdit />
+              Edit effect
+            </Button>
+          </Relative>
+
+          <Relative>
+            <Button $color={ButtonColor.Red} $size={ButtonSize.Md} onClick={onSave}>
+              <IconSave />
+              Save photo
+            </Button>
+          </Relative>
+        </Actions>
       ) : null}
-
-      <Actions>
-        <Button $color={ButtonColor.Black} $size={ButtonSize.Md} onClick={onEdit}>
-          <IconEdit />
-          Edit effect
-        </Button>
-
-        <Button $color={ButtonColor.Red} $size={ButtonSize.Md} onClick={onSave}>
-          <IconSave />
-          Save photo
-        </Button>
-      </Actions>
     </Wrapper>
   )
 }
@@ -119,7 +131,6 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
 const Wrapper = styled.div<WrapperProps>`
   position: relative;
   height: 100%;
-  padding-bottom: ${rem(48)};
   background-image: ${(props) => `url(${props.preview})` || "none"};
   background-size: cover;
   background-position: center;
@@ -135,9 +146,11 @@ const Wrapper = styled.div<WrapperProps>`
     backdrop-filter: blur(18px);
   }
 
+  .stage,
   .konvajs-content,
   canvas {
     width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
   }
 `
@@ -147,12 +160,18 @@ const Actions = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-
-  ${Button} {
-    width: 50%;
-  }
+  display: flex;
 
   @media all and (min-width: 1025px) {
+  }
+`
+
+const Relative = styled.div`
+  position: relative;
+  width: 50%;
+
+  ${Button} {
+    width: 100%;
   }
 `
 

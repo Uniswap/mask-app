@@ -12,7 +12,7 @@ const Wrapper = styled.footer`
   width: 100%;
   letter-spacing: 0;
   line-height: 1;
-  color: ${(props) => props.theme.colors.gray};
+  color: ${(props) => props.theme.colors.dark};
   text-align: left;
 
   &:empty {
@@ -26,8 +26,12 @@ const Wrapper = styled.footer`
 const Disclaimer = styled.div`
   font-size: ${rem(14)};
   line-height: normal;
-  opacity: 0.5;
+  opacity: 0.4;
   text-align: center;
+  width: ${rem(840)};
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 `
 
 const Footer: React.FC = () => {
