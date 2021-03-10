@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
   height: ${rem(520)};
-  background: ${(props) => props.theme.colors.odd};
+  background-color: ${(props) => props.theme.colors.odd};
 
   ${Card} {
     flex-basis: 0;
@@ -26,7 +26,33 @@ const Wrapper = styled.div`
     }
   }
 
-  @media all and (min-width: 1025px) {
+  @media all and (max-width: 767px) {
+    height: auto;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    background-color: ${(props) => props.theme.colors.white};
+
+    ${Card} {
+      flex: 0 0 100%;
+      height: auto;
+      background-color: ${(props) => props.theme.colors.odd};
+
+      &:first-child {
+        height: 400px;
+        margin-bottom: 30px;
+        background-color: ${(props) => props.theme.colors.white};
+      }
+    }
+  }
+
+  @media all and (max-width: 480px) {
+    ${Card} {
+      min-height: 0;
+
+      &:first-child {
+        height: 256px;
+      }
+    }
   }
 `
 

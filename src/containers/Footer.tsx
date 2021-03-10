@@ -19,7 +19,8 @@ const Wrapper = styled.footer`
     display: none;
   }
 
-  @media all and (min-width: 581px) {
+  @media all and (max-width: 480px) {
+    padding: 16px 0;
   }
 `
 

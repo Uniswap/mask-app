@@ -27,26 +27,6 @@ const Controller: React.FC<Props> = ({ rotation, scale, onRotation, onScale, onC
       <Inner>
         <Group>
           <SliderInfo>
-            <h4>Angle</h4>
-            <span>{rotation.toFixed(0)}°</span>
-          </SliderInfo>
-
-          <SliderInput
-            value={rotation}
-            min={CONTROLLER_ROTATION_MIN}
-            max={CONTROLLER_ROTATION_MAX}
-            onChange={onRotation}
-          >
-            <SliderTrack>
-              <SliderRange />
-              <SliderHandle />
-              <SliderMarker value={rotation} />
-            </SliderTrack>
-          </SliderInput>
-        </Group>
-
-        <Group>
-          <SliderInfo>
             <h4>Size</h4>
             <span>{(scale * 100).toFixed(0)}%</span>
           </SliderInfo>
@@ -62,6 +42,26 @@ const Controller: React.FC<Props> = ({ rotation, scale, onRotation, onScale, onC
               <SliderRange />
               <SliderHandle />
               <SliderMarker value={scale} />
+            </SliderTrack>
+          </SliderInput>
+        </Group>
+
+        <Group>
+          <SliderInfo>
+            <h4>Angle</h4>
+            <span>{rotation.toFixed(0)}°</span>
+          </SliderInfo>
+
+          <SliderInput
+            value={rotation}
+            min={CONTROLLER_ROTATION_MIN}
+            max={CONTROLLER_ROTATION_MAX}
+            onChange={onRotation}
+          >
+            <SliderTrack>
+              <SliderRange />
+              <SliderHandle />
+              <SliderMarker value={rotation} />
             </SliderTrack>
           </SliderInput>
         </Group>
@@ -84,6 +84,7 @@ const Wrapper = styled.div`
   border: 1px solid ${(props) => props.theme.colors.white};
   width: ${rem(221)};
   margin-bottom: ${rem(20)};
+  z-index: 11;
 
   &:after {
     top: 100%;
@@ -105,7 +106,7 @@ const Wrapper = styled.div`
   }
 
   [data-reach-slider-input][data-orientation="horizontal"] {
-    height: ${rem(2)};
+    height: 2px;
   }
 
   [data-reach-slider-marker][data-orientation="horizontal"] {
@@ -117,7 +118,7 @@ const Wrapper = styled.div`
     &:before {
       content: "";
       position: absolute;
-      height: ${rem(2)};
+      height: 2px;
       width: ${rem(60)};
       left: 50%;
       top: 50%;
@@ -157,8 +158,8 @@ const Wrapper = styled.div`
   }
 
   [data-reach-slider-handle] {
-    width: ${rem(14)};
-    height: ${rem(14)};
+    width: 14px;
+    height: 14px;
     outline: none;
     border: solid ${rem(2)} ${(props) => props.theme.colors.dark};
     background-color: ${(props) => props.theme.colors.white};
@@ -182,6 +183,34 @@ const Wrapper = styled.div`
   [data-reach-slider-range] {
     background-color: ${(props) => rgba(props.theme.colors.dark, 0.16)};
   }
+
+  @media all and (max-width: 767px) {
+    width: 90%;
+  }
+
+  @media all and (max-width: 480px) {
+    [data-reach-slider-input] {
+      position: absolute;
+      left: 60px;
+      right: 40px;
+      top: 8px;
+    }
+
+    ${Button} {
+      margin-top: 0;
+    }
+
+    [data-reach-slider-track] {
+      background-color: ${(props) => rgba(props.theme.colors.dark, 0.16)};
+
+      &[data-orientation="horizontal"] {
+        &::after,
+        &::before {
+          width: 30px;
+        }
+      }
+    }
+  }
 `
 
 const SliderInfo = styled.div`
@@ -204,10 +233,21 @@ const SliderInfo = styled.div`
     font-weight: ${(props) => props.theme.fontWeight.semibold};
     color: ${(props) => props.theme.colors.dark};
   }
+
+  @media all and (max-width: 767px) {
+    font-size: 10px;
+    position: relative;
+    z-index: 10;
+
+    span {
+      width: 30px;
+    }
+  }
 `
 
 const Group = styled.div`
   padding-bottom: ${rem(14)};
+  position: relative;
 `
 
 const Inner = styled.div`

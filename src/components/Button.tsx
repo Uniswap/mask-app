@@ -36,6 +36,11 @@ const Button = styled.button<ButtonProps>`
   transition: background-color ${(props) => props.theme.transition.base};
   outline: none !important;
 
+  @media all and (max-width: 480px) {
+    font-size: 11px;
+    padding: 9px 12px;
+  }
+
   ${(props) =>
     props.$color === ButtonColor.White &&
     css`
@@ -104,6 +109,11 @@ const Button = styled.button<ButtonProps>`
       padding: ${rem(20)} ${rem(24)};
       font-size: ${rem(12)};
       font-weight: ${(props) => props.theme.fontWeight.extrabold};
+
+      @media all and (max-width: 480px) {
+        font-size: 8px;
+        padding: 12px 20px;
+      }
     `}
 
   ${(props) =>
@@ -112,6 +122,11 @@ const Button = styled.button<ButtonProps>`
       padding: ${rem(8)} ${rem(16)};
       font-size: ${rem(10)};
       font-weight: ${(props) => props.theme.fontWeight.bold};
+
+      @media all and (max-width: 767px) {
+        font-size: 10px;
+        padding: 9px 12px;
+      }
     `}
 `
 

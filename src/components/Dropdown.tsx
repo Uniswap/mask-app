@@ -44,14 +44,19 @@ const Menu = styled.div`
     pointer-events: none;
     border-color: rgba(255, 255, 255, 0);
     border-bottom-color: ${(props) => props.theme.colors.primary};
-    border-width: 6px;
-    margin-left: -6px;
+    border-width: ${rem(6)};
+    margin-left: ${rem(-6)};
     margin-bottom: ${rem(-8)};
   }
 
   @media all and (max-width: 767px) {
-    top: auto;
-    bottom: 100%;
+    right: -5px;
+    left: auto;
+    transform: none;
+
+    &:after {
+      left: 80%;
+    }
   }
 `
 
@@ -89,6 +94,10 @@ const Wrapper = styled.div`
   &:hover ${Control} {
     color: ${(props) => props.theme.colors.white};
   }
+
+  @media all and (max-width: 767px) {
+    margin: 0 0 0 8px;
+  }
 `
 
 const Inner = styled.ul`
@@ -109,10 +118,6 @@ const Inner = styled.ul`
     &:hover {
       background-color: ${rgba("#000", 0.08)};
     }
-  }
-
-  @media all and (max-width: 580px) {
-    border-radius: 8px;
   }
 `
 

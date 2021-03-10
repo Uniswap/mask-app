@@ -10,8 +10,8 @@ const Card = styled.div<CardProps>`
   padding: ${rem(54)} ${rem(40)};
   position: relative;
 
-  @media all and (max-width: 580px) {
-    padding: 15px 22px;
+  @media all and (max-width: 767px) {
+    padding: 24px 20px 16px;
   }
 `
 
