@@ -2,10 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { rem } from "polished"
 
-interface LinkProps {
-  href?: string
-  target?: string
-}
+// interface LinkProps {
+//   href?: string
+//   target?: string
+// }
 
 const Wrapper = styled.div`
   display: flex;
