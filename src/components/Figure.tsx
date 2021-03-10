@@ -10,6 +10,8 @@ import { scaleFigure } from "../helpers/utils"
  * Types
  */
 interface Props {
+  x?: number
+  y?: number
   offsetX?: number
   offsetY?: number
   rotation?: number
@@ -19,19 +21,21 @@ interface Props {
   draggable?: boolean
 }
 
-const Figure: React.FC<Props> = ({ fit, src, rotation, scale, draggable, offsetX, offsetY, ...rest }: Props) => {
+const Figure: React.FC<Props> = ({ fit, src, rotation, scale, draggable, x, y, offsetX, offsetY, ...rest }: Props) => {
   const meta = useImage(src as string)
   const image = head(meta) as HTMLImageElement
   const config = fit ? scaleFigure(image) : rest
 
   return (
     <Image
+      x={x}
+      y={y}
+      offsetX={offsetX}
+      offsetY={offsetY}
       image={image}
       draggable={draggable}
       scale={scale}
       rotation={rotation}
-      offsetX={offsetX}
-      offsetY={offsetY}
       {...config}
     />
   )

@@ -1,6 +1,8 @@
 import { isNil } from "ramda"
 
-import { FILE_NAME, SCALE_FACTOR, STAGE_HEIGHT, STAGE_WIDTH } from "./const"
+import { nets, detectSingleFace, TinyFaceDetectorOptions, Point, IPoint } from "face-api.js"
+
+import { FILE_NAME, SCALE_FACTOR, STAGE_HEIGHT, STAGE_WIDTH, ONE_RADIAN_IN_DEGREES, CONTROLLER_ROTATION } from "./const"
 
 export const scaleFigure = (image?: HTMLImageElement) => {
   if (isNil(image)) {
@@ -19,6 +21,68 @@ export const scaleFigure = (image?: HTMLImageElement) => {
     y,
     width,
     height,
+  }
+}
+
+export const average = (points: Point[] | undefined): IPoint | undefined => {
+  if (isNil(points)) {
+    return undefined
+  }
+
+  const { x, y } = points.reduce(
+    (total, point) => ({
+      x: total.x + point.x,
+      y: total.y + point.y,
+    }),
+    { x: 0, y: 0 }
+  )
+
+  return {
+    x: x / points.length,
+    y: y / points.length,
+  }
+}
+
+export const angleBetweenPoints = (left: IPoint, right: IPoint) => {
+  const dy = right.y - left.y
+  const dx = right.x - left.x
+  const theta = Math.atan2(dy, dx)
+
+  return theta * ONE_RADIAN_IN_DEGREES
+}
+
+export const loadModels = async () => {
+  try {
+    await Promise.all([nets.tinyFaceDetector.loadFromUri("/models"), nets.faceLandmark68Net.loadFromUri("/models")])
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const detectFace = async () => {
+  const face = document.querySelector("canvas") as HTMLCanvasElement
+  const detector = await detectSingleFace(face, new TinyFaceDetectorOptions()).withFaceLandmarks()
+
+  const left = average(detector?.landmarks.getLeftEye())
+  const right = average(detector?.landmarks.getRightEye())
+  const nose = average(detector?.landmarks.getNose())
+
+  if (left && right && nose) {
+    return {
+      coordinates: {
+        x: nose.x / SCALE_FACTOR,
+        y: Math.min(left.y, right.y) / SCALE_FACTOR,
+      },
+      rotation: angleBetweenPoints(left, right),
+    }
+  }
+
+  return {
+    coordinates: {
+      x: STAGE_WIDTH / SCALE_FACTOR,
+      y: STAGE_HEIGHT / SCALE_FACTOR,
+    },
+    rotation: CONTROLLER_ROTATION,
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Stage, Layer } from "react-konva"
 import { Vector2d } from "konva/types/types"
 import { not } from "ramda"
@@ -8,12 +8,13 @@ import {
   CONTROLLER_SIZE,
   MASK_HEIGHT,
   MASK_WIDTH,
+  RENDER_TIME,
   SCALE_FACTOR,
   STAGE_HEIGHT,
   STAGE_WIDTH,
 } from "../helpers/const"
 
-import { download } from "../helpers/utils"
+import { download, detectFace, loadModels } from "../helpers/utils"
 
 import IconEdit from "../icons/IconEdit"
 import IconSave from "../icons/IconSave"
@@ -30,9 +31,22 @@ interface Props {
 const Sandbox: React.FC<Props> = ({ file }: Props) => {
   const stageRef = useRef<any>(null)
 
+  const [coordinates, setCoordinates] = useState<Vector2d>()
   const [edit, setEdit] = useState<boolean>(false)
   const [rotation, setRotation] = useState<number>(CONTROLLER_ROTATION)
   const [scale, setScale] = useState<Vector2d>({ x: CONTROLLER_SIZE, y: CONTROLLER_SIZE })
+
+  const onDetect = async () => {
+    try {
+      const data = await detectFace()
+      setRotation(data.rotation)
+      setCoordinates(data.coordinates)
+    } catch (error) {}
+  }
+
+  const onEdit = () => {
+    setEdit(not(edit))
+  }
 
   const onScale = (scale: number) => {
     setScale({
@@ -41,15 +55,22 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
     })
   }
 
-  const onEdit = () => {
-    setEdit(not(edit))
-  }
-
   const onSave = () => {
     if (stageRef?.current) {
       download(stageRef.current.toDataURL())
     }
   }
+
+  useEffect(() => {
+    loadModels()
+  }, [])
+
+  useEffect(() => {
+    if (file) {
+      /** @todo refactor this */
+      setTimeout(onDetect, RENDER_TIME)
+    }
+  }, [file])
 
   return (
     <>
@@ -61,6 +82,8 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
             scale={scale}
             rotation={rotation}
             src="/static/stripe.svg"
+            x={coordinates?.x}
+            y={coordinates?.y}
             offsetX={MASK_WIDTH / SCALE_FACTOR}
             offsetY={MASK_HEIGHT / SCALE_FACTOR}
           />
