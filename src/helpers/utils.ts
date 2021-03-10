@@ -59,8 +59,8 @@ export const loadModels = async () => {
   }
 }
 
-export const detectFace = async () => {
-  const face = document.querySelector("canvas") as HTMLCanvasElement
+export const detectFace = async (stage: any) => {
+  const face = stage.querySelector("canvas") as HTMLCanvasElement
   const detector = await detectSingleFace(face, new TinyFaceDetectorOptions()).withFaceLandmarks()
 
   const left = average(detector?.landmarks.getLeftEye())

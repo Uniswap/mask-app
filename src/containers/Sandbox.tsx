@@ -38,7 +38,7 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
 
   const onDetect = async () => {
     try {
-      const data = await detectFace()
+      const data = await detectFace(stageRef?.current?.content)
       setRotation(data.rotation)
       setCoordinates(data.coordinates)
     } catch (error) {}
