@@ -13,7 +13,7 @@ interface LinkProps {
 const Wrapper = styled.div`
   margin-bottom: ${rem(30)};
   color: ${(props) => props.theme.colors.gray};
-  text-align: center;
+  text-align: left;
 
   a {
     color: inherit;
@@ -35,7 +35,7 @@ const Wrapper = styled.div`
     }
   }
 
-  @media all and (max-width: 480px) {
+  @media all and (max-width: 767px) {
     margin-bottom: 16px;
     display: flex;
     justify-content: space-between;
@@ -45,6 +45,10 @@ const Wrapper = styled.div`
 
 const SocialLink = styled.a<LinkProps>`
   margin: 0 ${rem(5)};
+
+  &:first-child {
+    margin-left: 0 !important;
+  }
 
   @media all and (max-width: 767px) {
     margin: 0 8px;
@@ -56,7 +60,7 @@ const Copy = styled.div`
   margin-bottom: ${rem(16)};
   font-weight: ${(props) => props.theme.fontWeight.semibold};
 
-  @media all and (max-width: 480px) {
+  @media all and (max-width: 767px) {
     margin-bottom: 0;
     text-align: left;
   }
@@ -65,7 +69,7 @@ const Copy = styled.div`
 const List = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   svg {
     margin-right: 0;

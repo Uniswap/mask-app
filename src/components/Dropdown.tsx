@@ -36,24 +36,28 @@ const Dropdown: React.FC<DropdownProps> = ({ title, data, ...props }: DropdownPr
 
 const Menu = styled.div`
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: 50%;
   opacity: 0;
   visibility: hidden;
   z-index: 10;
-  padding-top: ${rem(8)};
-  transform: translate(-50%, 0);
-  transition: all ${(props) => props.theme.transition.base};
+  padding-bottom: ${rem(8)};
+  transform: translate(-50%, 0) scale(0.9) rotate(-4deg);
+  will-change: transform, opacity, visibility;
+  transform-origin: 50% 100%;
+  transition: visibility ${(props) => props.theme.transition.base}, opacity ${(props) => props.theme.transition.base},
+    transform 0.3s ease;
   color: ${(props) => props.theme.colors.gray};
   font-weight: ${(props) => props.theme.fontWeight.semibold};
 
   &:hover {
     opacity: 1;
     visibility: visible;
+    transform: translate(-50%, 0) scale(1) rotate(0);
   }
 
   &:after {
-    bottom: 100%;
+    top: 100%;
     left: 50%;
     border: solid transparent;
     content: "";
@@ -62,16 +66,16 @@ const Menu = styled.div`
     position: absolute;
     pointer-events: none;
     border-color: rgba(255, 255, 255, 0);
-    border-bottom-color: ${(props) => props.theme.colors.primary};
+    border-top-color: ${(props) => props.theme.colors.primary};
     border-width: ${rem(6)};
     margin-left: ${rem(-6)};
-    margin-bottom: ${rem(-8)};
+    margin-top: ${rem(-8)};
   }
 
   @media all and (max-width: 767px) {
     right: -5px;
     left: auto;
-    transform: none;
+    transform: none !important;
 
     &:after {
       left: 80%;
@@ -102,6 +106,7 @@ const Control = styled.div`
     ~ ${Menu} {
       opacity: 1;
       visibility: visible;
+      transform: translate(-50%, 0) scale(1) rotate(0);
     }
   }
 `
@@ -131,7 +136,8 @@ const Inner = styled.ul`
 
   a {
     display: block;
-    padding: ${rem(15)} ${rem(20)};
+    font-size: ${rem(14)};
+    padding: ${rem(10)} ${rem(15)};
     color: ${(props) => props.theme.colors.white} !important;
 
     &:hover {
