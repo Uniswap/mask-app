@@ -47,7 +47,6 @@ const Menu = styled.div`
   transform-origin: 50% 100%;
   transition: visibility ${(props) => props.theme.transition.base}, opacity ${(props) => props.theme.transition.base},
     transform 0.3s ease;
-  color: ${(props) => props.theme.colors.gray};
   font-weight: ${(props) => props.theme.fontWeight.semibold};
 
   &:hover {
@@ -66,7 +65,7 @@ const Menu = styled.div`
     position: absolute;
     pointer-events: none;
     border-color: rgba(255, 255, 255, 0);
-    border-top-color: ${(props) => props.theme.colors.primary};
+    border-top-color: ${(props) => props.theme.colors.white};
     border-width: ${rem(6)};
     margin-left: ${rem(-6)};
     margin-top: ${rem(-8)};
@@ -96,11 +95,7 @@ const Control = styled.div`
     color: ${(props) => props.theme.colors.white};
 
     svg {
-      opacity: 1;
-
-      path {
-        fill: ${(props) => props.theme.colors.primary};
-      }
+      opacity: 0.48;
     }
 
     ~ ${Menu} {
@@ -127,8 +122,10 @@ const Wrapper = styled.div`
 const Inner = styled.ul`
   list-style: none;
   margin: 0;
-  padding: 0;
-  background-color: ${(props) => props.theme.colors.primary};
+  padding: ${rem(8)};
+  box-shadow: 0 3px 12px 0 rgba(83, 86, 92, 0.1), 0 2px 3px 0 rgba(83, 86, 92, 0.2);
+  background-color: ${(props) => props.theme.colors.white};
+  text-align: center;
 
   li {
     display: block;
@@ -136,12 +133,13 @@ const Inner = styled.ul`
 
   a {
     display: block;
-    font-size: ${rem(14)};
-    padding: ${rem(10)} ${rem(15)};
-    color: ${(props) => props.theme.colors.white} !important;
+    font-size: ${rem(10)};
+    padding: ${rem(8)} ${rem(15)};
+    color: ${(props) => props.theme.colors.dark} !important;
+    font-weight: ${(props) => props.theme.fontWeight.bold} !important;
 
     &:hover {
-      background-color: ${rgba("#000", 0.08)};
+      background-color: #e7e7e7;
     }
   }
 `
