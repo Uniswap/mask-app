@@ -148,7 +148,7 @@ const UploadWrapper = styled.div`
     min-width: ${rem(210)};
   }
 
-  @media all and (max-width: 768px) {
+  @media all and (min-width: 768px) {
     input {
       display: block !important;
       opacity: 0;
