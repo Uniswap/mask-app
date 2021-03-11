@@ -70,6 +70,12 @@ const Wrapper = styled.div`
       margin-bottom: 20px;
     }
   }
+
+  @media all and (max-width: 280px) {
+    br {
+      display: none;
+    }
+  }
 `
 
 const Links = styled.div`
@@ -83,6 +89,7 @@ const Links = styled.div`
   a {
     color: ${(props) => props.theme.colors.primary};
     padding: ${rem(10)};
+    white-space: nowrap;
 
     & + a {
       margin-left: ${rem(12)};
@@ -107,6 +114,7 @@ const Divider = styled.div`
   border-bottom: 1px solid ${(props) => props.theme.colors.dark};
   width: ${rem(90)};
   margin: ${rem(30)} auto;
+  margin: 3vh auto;
 
   @media all and (max-width: 767px) {
     display: none;
@@ -134,6 +142,11 @@ const UploadWrapper = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+
+  ${Button} {
+    max-width: 100%;
+    min-width: ${rem(210)};
+  }
 
   @media all and (max-width: 768px) {
     input {

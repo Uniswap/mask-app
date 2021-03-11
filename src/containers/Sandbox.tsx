@@ -19,7 +19,7 @@ import { download, detectFace, loadModels } from "../helpers/utils"
 
 import { slideUp } from "../core/GlobalStyles"
 
-import { IconEdit, IconSave } from "../icons"
+import { IconEdit, IconSave, IconShare } from "../icons"
 import Figure from "../components/Figure"
 import Button, { ButtonColor, ButtonSize } from "../components/Button"
 
@@ -138,7 +138,20 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
           <Relative>
             <Button $color={ButtonColor.Red} $size={ButtonSize.Md} onClick={onSave}>
               <IconSave />
-              Save photo
+              Save
+            </Button>
+          </Relative>
+          <Relative>
+            <Button
+              $color={ButtonColor.Red}
+              $size={ButtonSize.Md}
+              as="a"
+              target="_blank"
+              rel="noreferrer"
+              href="https://twitter.com/intent/tweet?text=Layer%202%20is%20coming.%20Be%20ready%20for%20scaling%20through%20Optimism!&url=https%3A%2F%2Fimoptimistic.xyz"
+            >
+              <IconShare />
+              Share
             </Button>
           </Relative>
         </Actions>
@@ -198,18 +211,29 @@ const Relative = styled.div`
   position: relative;
   width: 50%;
 
+  &:first-child {
+    flex: 0 0 50%;
+  }
+
   ${Button} {
     width: 100%;
   }
 
   > ${Button} {
     transform: translate3d(0, 100%, 0);
+    border-left: 1px solid #000;
     animation: 0.3s ${slideUp} forwards 1s ease;
+  }
+
+  &:nth-child(2) {
+    > ${Button} {
+      animation-delay: 1.1s;
+    }
   }
 
   &:last-child {
     > ${Button} {
-      animation-delay: 1.1s;
+      animation-delay: 1.2s;
     }
   }
 

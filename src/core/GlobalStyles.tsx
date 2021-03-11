@@ -5,7 +5,16 @@ export const GlobalStyles = createGlobalStyle`
   ${normalize()};
 
   html {
-    @media all and (max-width: 1040px) {
+
+    @media all and (min-width: 1441px) {
+      font-size: 20px;
+    }
+
+    @media all and (min-width: 1600px) {
+      font-size: 22px;
+    }
+
+    @media all and (max-width: 1040px), (min-width: 1441px) and (max-height: 1040px) {
       font-size: 14px
     }
 
@@ -15,14 +24,6 @@ export const GlobalStyles = createGlobalStyle`
 
     @media all and (max-width: 480px) {
       font-size: 10px
-    }
-
-    @media all and (min-width: 1441px) {
-      font-size: 20px;
-    }
-
-    @media all and (min-width: 1600px) {
-      font-size: 22px;
     }
   }
 

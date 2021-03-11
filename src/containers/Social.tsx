@@ -58,6 +58,7 @@ const Copy = styled.div`
 
   @media all and (max-width: 480px) {
     margin-bottom: 0;
+    text-align: left;
   }
 `
 
