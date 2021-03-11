@@ -40,7 +40,7 @@ const Info: React.FC<Props> = ({ onDrop }: Props) => {
             <div>
               <Button $color={ButtonColor.White} $size={ButtonSize.Lg} {...getRootProps()}>
                 Pick Photo
-                <input {...getInputProps()} accept="image/*" />
+                <input {...getInputProps()} name="file" accept="image/*" />
               </Button>
               <Hint>or drag and drop your file here</Hint>
             </div>
