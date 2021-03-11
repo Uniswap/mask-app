@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import { Text, Stage, Layer } from "react-konva"
+import { Stage, Layer } from "react-konva"
 import { Vector2d } from "konva/types/types"
 import { not } from "ramda"
 import styled from "styled-components"
