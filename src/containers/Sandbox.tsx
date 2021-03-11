@@ -30,7 +30,20 @@ interface Props {
 }
 interface WrapperProps {
   preview?: string
+  cursor: Cursor
 }
+
+export enum Cursor {
+  Default,
+  Grab,
+  Grabbing,
+}
+
+const CURSORS = new Map<Cursor, "initial" | "-webkit-grab" | "-webkit-grabbing">([
+  [Cursor.Default, "initial"],
+  [Cursor.Grab, "-webkit-grab"],
+  [Cursor.Grabbing, "-webkit-grabbing"],
+])
 
 const Sandbox: React.FC<Props> = ({ file }: Props) => {
   const stageRef = useRef<any>(null)
@@ -39,9 +52,11 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
     x: 250,
     y: 170,
   })
+
   const [edit, setEdit] = useState<boolean>(false)
   const [rotation, setRotation] = useState<number>(CONTROLLER_ROTATION)
   const [scale, setScale] = useState<Vector2d>({ x: CONTROLLER_SIZE, y: CONTROLLER_SIZE })
+  const [cursor, setCursor] = useState<Cursor>(Cursor.Default)
 
   const onDetect = async () => {
     try {
@@ -80,7 +95,7 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
   }, [file])
 
   return (
-    <Wrapper preview={file}>
+    <Wrapper preview={file} cursor={cursor}>
       <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef} className="stage">
         <Layer>
           <Figure fit src={file || "/static/images/default.png"} />
@@ -93,6 +108,9 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
             y={coordinates?.y}
             offsetX={MASK_WIDTH / SCALE_FACTOR}
             offsetY={MASK_HEIGHT / SCALE_FACTOR}
+            onMouseEnter={() => setCursor(Cursor.Grab)}
+            onMouseDown={() => setCursor(Cursor.Grabbing)}
+            onMouseLeave={() => setCursor(Cursor.Default)}
           />
         </Layer>
       </Stage>
@@ -136,6 +154,7 @@ const Wrapper = styled.div<WrapperProps>`
   background-position: center;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
+  cursor: ${(props) => CURSORS.get(props.cursor)};
 
   &:before {
     content: "";

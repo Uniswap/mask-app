@@ -5,6 +5,7 @@ import { Image } from "react-konva"
 import { Vector2d } from "konva/types/types"
 
 import { scaleFigure } from "../helpers/utils"
+import { KonvaEventObject } from "konva/types/Node"
 
 /**
  * Types
@@ -19,9 +20,26 @@ interface Props {
   src?: string
   fit?: boolean
   draggable?: boolean
+  onMouseEnter?: (event: KonvaEventObject<MouseEvent>) => void
+  onMouseLeave?: (event: KonvaEventObject<MouseEvent>) => void
+  onMouseDown?: (event: KonvaEventObject<MouseEvent>) => void
 }
 
-const Figure: React.FC<Props> = ({ fit, src, rotation, scale, draggable, x, y, offsetX, offsetY, ...rest }: Props) => {
+const Figure: React.FC<Props> = ({
+  fit,
+  src,
+  rotation,
+  scale,
+  draggable,
+  x,
+  y,
+  offsetX,
+  offsetY,
+  onMouseEnter,
+  onMouseLeave,
+  onMouseDown,
+  ...rest
+}: Props) => {
   const meta = useImage(src as string)
   const image = head(meta) as HTMLImageElement
   const config = fit ? scaleFigure(image) : rest
@@ -36,6 +54,9 @@ const Figure: React.FC<Props> = ({ fit, src, rotation, scale, draggable, x, y, o
       draggable={draggable}
       scale={scale}
       rotation={rotation}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onMouseDown={onMouseDown}
       {...config}
     />
   )
