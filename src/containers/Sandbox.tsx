@@ -148,7 +148,7 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
               as="a"
               target="_blank"
               rel="noreferrer"
-              href="https://twitter.com/intent/tweet?text=Layer%202%20is%20coming.%20Be%20ready%20for%20scaling%20through%20Optimism!&url=https%3A%2F%2Fimoptimistic.xyz&hashtags=Optimism,Ethereum,Rollup,Layer2"
+              href="https://twitter.com/intent/tweet?text=Layer%202%20is%20coming.%20Be%20ready%20for%20scaling%20through%20%23Optimism!&url=https%3A%2F%2Fimoptimistic.xyz&hashtags=Optimism,Ethereum,Rollup,Layer2"
             >
               <IconShare />
               Share
