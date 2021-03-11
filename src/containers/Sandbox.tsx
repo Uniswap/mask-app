@@ -109,8 +109,9 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
             offsetX={MASK_WIDTH / SCALE_FACTOR}
             offsetY={MASK_HEIGHT / SCALE_FACTOR}
             onMouseEnter={() => setCursor(Cursor.Grab)}
-            onMouseDown={() => setCursor(Cursor.Grabbing)}
             onMouseLeave={() => setCursor(Cursor.Default)}
+            onMouseDown={() => setCursor(Cursor.Grabbing)}
+            onMouseUp={() => setCursor(Cursor.Default)}
           />
         </Layer>
       </Stage>

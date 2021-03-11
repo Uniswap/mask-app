@@ -23,6 +23,7 @@ interface Props {
   onMouseEnter?: (event: KonvaEventObject<MouseEvent>) => void
   onMouseLeave?: (event: KonvaEventObject<MouseEvent>) => void
   onMouseDown?: (event: KonvaEventObject<MouseEvent>) => void
+  onMouseUp?: (event: KonvaEventObject<MouseEvent>) => void
 }
 
 const Figure: React.FC<Props> = ({
@@ -38,6 +39,7 @@ const Figure: React.FC<Props> = ({
   onMouseEnter,
   onMouseLeave,
   onMouseDown,
+  onMouseUp,
   ...rest
 }: Props) => {
   const meta = useImage(src as string)
@@ -57,6 +59,7 @@ const Figure: React.FC<Props> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
       {...config}
     />
   )
