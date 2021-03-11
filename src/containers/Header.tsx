@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   return (
     <Wrapper>
       <Grid>
-        <Logo>
+        <Logo href="/">
           <img src="/static/images/logo.svg" alt="Optimisim mask" />
           <span>Optimisim mask</span>
         </Logo>
@@ -29,13 +29,12 @@ const Wrapper = styled.header`
   }
 `
 
-const Logo = styled.div`
+const Logo = styled.a`
   font-size: ${(props) => rem(props.theme.fontSize.base)};
   font-weight: ${(props) => props.theme.fontWeight.black};
   text-align: center;
   font-style: italic;
   text-transform: uppercase;
-  cursor: default;
   display: inline-block;
 
   img {
