@@ -1,6 +1,7 @@
 import React from "react"
-import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderMarker } from "@reach/slider"
 import styled from "styled-components"
+import OutsideClickHandler from "react-outside-click-handler"
+import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderMarker } from "@reach/slider"
 import { rem, rgba } from "polished"
 
 import {
@@ -25,54 +26,56 @@ interface Props {
 
 const Controller: React.FC<Props> = ({ rotation, scale, onRotation, onScale, onClose }: Props) => {
   return (
-    <Wrapper>
-      <Inner>
-        <Group>
-          <SliderInfo>
-            <h4>Size</h4>
-            <span>{(scale * 100).toFixed(0)}%</span>
-          </SliderInfo>
+    <OutsideClickHandler onOutsideClick={onClose}>
+      <Wrapper>
+        <Inner>
+          <Group>
+            <SliderInfo>
+              <h4>Size</h4>
+              <span>{(scale * 100).toFixed(0)}%</span>
+            </SliderInfo>
 
-          <SliderInput
-            value={scale}
-            min={CONTROLLER_SIZE_MIN}
-            max={CONTROLLER_SIZE_MAX}
-            step={CONTROLLER_SIZE_STEP}
-            onChange={onScale}
-          >
-            <SliderTrack>
-              <SliderRange />
-              <SliderHandle />
-              <SliderMarker value={scale} />
-            </SliderTrack>
-          </SliderInput>
-        </Group>
+            <SliderInput
+              value={scale}
+              min={CONTROLLER_SIZE_MIN}
+              max={CONTROLLER_SIZE_MAX}
+              step={CONTROLLER_SIZE_STEP}
+              onChange={onScale}
+            >
+              <SliderTrack>
+                <SliderRange />
+                <SliderHandle />
+                <SliderMarker value={scale} />
+              </SliderTrack>
+            </SliderInput>
+          </Group>
 
-        <Group>
-          <SliderInfo>
-            <h4>Angle</h4>
-            <span>{rotation.toFixed(0)}°</span>
-          </SliderInfo>
+          <Group>
+            <SliderInfo>
+              <h4>Angle</h4>
+              <span>{rotation.toFixed(0)}°</span>
+            </SliderInfo>
 
-          <SliderInput
-            value={rotation}
-            min={CONTROLLER_ROTATION_MIN}
-            max={CONTROLLER_ROTATION_MAX}
-            onChange={onRotation}
-          >
-            <SliderTrack>
-              <SliderRange />
-              <SliderHandle />
-              <SliderMarker value={rotation} />
-            </SliderTrack>
-          </SliderInput>
-        </Group>
+            <SliderInput
+              value={rotation}
+              min={CONTROLLER_ROTATION_MIN}
+              max={CONTROLLER_ROTATION_MAX}
+              onChange={onRotation}
+            >
+              <SliderTrack>
+                <SliderRange />
+                <SliderHandle />
+                <SliderMarker value={rotation} />
+              </SliderTrack>
+            </SliderInput>
+          </Group>
 
-        <Button $color={ButtonColor.Gray} $size={ButtonSize.Xs} onClick={onClose}>
-          Save
-        </Button>
-      </Inner>
-    </Wrapper>
+          <Button $color={ButtonColor.Gray} $size={ButtonSize.Xs} onClick={onClose}>
+            Save
+          </Button>
+        </Inner>
+      </Wrapper>
+    </OutsideClickHandler>
   )
 }
 
