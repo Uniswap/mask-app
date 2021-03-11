@@ -170,7 +170,6 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
 }
 
 const Wrapper = styled.div<WrapperProps>`
-  height: 100%;
   position: relative;
   background-image: ${(props) => `url(${props.preview})` || "none"};
   background-size: cover;
@@ -194,7 +193,6 @@ const Wrapper = styled.div<WrapperProps>`
   .konvajs-content,
   canvas {
     width: 100% !important;
-    height: 100% !important;
     object-fit: cover;
   }
 

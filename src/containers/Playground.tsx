@@ -69,7 +69,7 @@ const Wrapper = styled.div`
       background-color: ${(props) => props.theme.colors.odd};
 
       &:first-child {
-        height: 400px;
+        // height: 400px;
         margin-bottom: 30px;
         background-color: ${(props) => props.theme.colors.white};
       }
@@ -80,9 +80,9 @@ const Wrapper = styled.div`
     ${Card} {
       min-height: 0;
 
-      &:first-child {
-        height: 256px;
-      }
+      // &:first-child {
+      //   height: 256px;
+      // }
     }
   }
 `
