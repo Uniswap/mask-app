@@ -18,7 +18,7 @@ const Info: React.FC<Props> = ({ onDrop }: Props) => {
     <Wrapper>
       <Row middle="xs" center="xs">
         <Col xs={12}>
-          <h1>Optimism mask</h1>
+          <h1>Optimism Mask</h1>
           <p>
             Do you part to support Optimistic Rollups <br />
             for Ethereum's better scaling tomorrow! Upload <br />
@@ -39,7 +39,7 @@ const Info: React.FC<Props> = ({ onDrop }: Props) => {
           <UploadWrapper>
             <div>
               <Button $color={ButtonColor.White} $size={ButtonSize.Lg} {...getRootProps()}>
-                Choose the file
+                Pick Photo
                 <input {...getInputProps()} accept="image/*" />
               </Button>
               <Hint>or drag and drop your file here</Hint>
