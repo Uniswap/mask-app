@@ -18,6 +18,7 @@ const Header: React.FC = () => {
 
 const Wrapper = styled.header`
   padding: ${rem(70)} 0;
+  padding: 5vh 0;
   letter-spacing: 0;
   line-height: 1;
   width: 100%;

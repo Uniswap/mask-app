@@ -22,6 +22,7 @@ const Footer: React.FC = () => {
 
 const Wrapper = styled.footer`
   padding: ${rem(50)} 0;
+  padding: 4vh 0;
   bottom: 0;
   left: 0;
   width: 100%;
