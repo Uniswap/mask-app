@@ -39,10 +39,10 @@ export enum Cursor {
   Grabbing,
 }
 
-const CURSORS = new Map<Cursor, "initial" | "-webkit-grab" | "-webkit-grabbing">([
+const CURSORS = new Map<Cursor, "initial" | "grab" | "grabbing">([
   [Cursor.Default, "initial"],
-  [Cursor.Grab, "-webkit-grab"],
-  [Cursor.Grabbing, "-webkit-grabbing"],
+  [Cursor.Grab, "grab"],
+  [Cursor.Grabbing, "grabbing"],
 ])
 
 const Sandbox: React.FC<Props> = ({ file }: Props) => {
