@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Optimism mask",
+  "name": "Layer 2 is coming. Be ready for scaling through Optimism!",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,6 +19,7 @@
     }
   ],
   "start_url": ".",
+  "orientation": "portrait",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
