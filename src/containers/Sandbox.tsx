@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import { Stage, Layer } from "react-konva"
+import { Text, Stage, Layer } from "react-konva"
 import { Vector2d } from "konva/types/types"
 import { not } from "ramda"
 import styled from "styled-components"
@@ -24,6 +24,7 @@ import Figure from "../components/Figure"
 import Button, { ButtonColor, ButtonSize } from "../components/Button"
 
 import Controller from "./Controller"
+import { KonvaEventObject } from "konva/types/Node"
 
 interface Props {
   file?: string
@@ -83,6 +84,13 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
     }
   }
 
+  const onDragMove = ({ target }: KonvaEventObject<DragEvent | TouchEvent>) => {
+    setCoordinates({
+      x: target.x(),
+      y: target.y(),
+    })
+  }
+
   useEffect(() => {
     loadModels()
   }, [])
@@ -112,6 +120,7 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
             onMouseLeave={() => setCursor(Cursor.Default)}
             onMouseDown={() => setCursor(Cursor.Grabbing)}
             onMouseUp={() => setCursor(Cursor.Default)}
+            onDragMove={onDragMove}
           />
         </Layer>
       </Stage>
@@ -162,7 +171,6 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
 
 const Wrapper = styled.div<WrapperProps>`
   position: relative;
-  height: 100%;
   background-image: ${(props) => `url(${props.preview})` || "none"};
   background-size: cover;
   background-position: center;
@@ -185,7 +193,6 @@ const Wrapper = styled.div<WrapperProps>`
   .konvajs-content,
   canvas {
     width: 100% !important;
-    height: 100% !important;
     object-fit: cover;
   }
 

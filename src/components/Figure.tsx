@@ -24,6 +24,7 @@ interface Props {
   onMouseLeave?: (event: KonvaEventObject<MouseEvent>) => void
   onMouseDown?: (event: KonvaEventObject<MouseEvent>) => void
   onMouseUp?: (event: KonvaEventObject<MouseEvent>) => void
+  onDragMove?: (event: KonvaEventObject<DragEvent | TouchEvent>) => void
 }
 
 const Figure: React.FC<Props> = ({
@@ -40,6 +41,7 @@ const Figure: React.FC<Props> = ({
   onMouseLeave,
   onMouseDown,
   onMouseUp,
+  onDragMove,
   ...rest
 }: Props) => {
   const meta = useImage(src as string)
@@ -60,6 +62,7 @@ const Figure: React.FC<Props> = ({
       onMouseLeave={onMouseLeave}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
+      onDragEnd={onDragMove}
       {...config}
     />
   )
