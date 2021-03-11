@@ -26,11 +26,7 @@ const Wrapper = styled.div`
       color: ${(props) => props.theme.colors.primary};
 
       svg {
-        opacity: 1;
-
-        path {
-          fill: ${(props) => props.theme.colors.primary};
-        }
+        opacity: 0.48;
       }
     }
   }

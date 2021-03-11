@@ -53,6 +53,7 @@ export const GlobalStyles = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+    outline: none !important;
     transition: all ${(props) => props.theme.transition.base};
   }
 
