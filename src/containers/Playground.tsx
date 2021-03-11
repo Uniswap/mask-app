@@ -69,9 +69,12 @@ const Wrapper = styled.div`
       background-color: ${(props) => props.theme.colors.odd};
 
       &:first-child {
-        // height: 400px;
         margin-bottom: 30px;
         background-color: ${(props) => props.theme.colors.white};
+
+        @media all and (min-width: 481px) {
+          height: 400px;
+        }
       }
     }
   }
@@ -79,10 +82,6 @@ const Wrapper = styled.div`
   @media all and (max-width: 480px) {
     ${Card} {
       min-height: 0;
-
-      // &:first-child {
-      //   height: 256px;
-      // }
     }
   }
 `

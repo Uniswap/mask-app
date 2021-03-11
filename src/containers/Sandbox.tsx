@@ -196,6 +196,16 @@ const Wrapper = styled.div<WrapperProps>`
     object-fit: cover;
   }
 
+  @media all and (min-width: 481px) {
+    height: 100% !important;
+
+    .stage,
+    .konvajs-content,
+    canvas {
+      height: 100% !important;
+    }
+  }
+
   @media all and (max-width: 480px) {
     overflow: visible;
     transform: none;
