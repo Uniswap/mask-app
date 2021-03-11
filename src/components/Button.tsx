@@ -29,6 +29,7 @@ const Button = styled.button<ButtonProps>`
   letter-spacing: 0;
   border: 0;
   font-family: inherit;
+  line-height: 1;
   font-size: ${(props) => rem(props.theme.fontSize.base)};
   font-weight: ${(props) => props.theme.fontWeight.semibold};
   appearance: none;
