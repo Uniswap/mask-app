@@ -9,7 +9,7 @@ const Header: React.FC = () => {
       <Grid>
         <Logo href="/">
           <img src="/static/images/logo.svg" alt="Optimisim mask" />
-          <span>Optimisim mask</span>
+          <span>Optimism Mask</span>
         </Logo>
       </Grid>
     </Wrapper>
