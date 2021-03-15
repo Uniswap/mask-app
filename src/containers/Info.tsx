@@ -20,7 +20,7 @@ const Info: React.FC<Props> = ({ onDrop }: Props) => {
         <Col xs={12}>
           <h1>Optimism Mask</h1>
           <p>
-            Do you part to support Optimistic Rollups <br />
+            Do your part to support Optimistic Rollups <br />
             for Ethereum's better scaling tomorrow! Upload <br />
             your photo, choose your mask, and download <br />
             or share with the Twitter button!
