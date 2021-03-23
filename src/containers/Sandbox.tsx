@@ -50,8 +50,8 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
   const stageRef = useRef<any>(null)
 
   const [coordinates, setCoordinates] = useState<Vector2d>({
-    x: 250,
-    y: 170,
+    x: 243,
+    y: 160,
   })
 
   const [edit, setEdit] = useState<boolean>(false)
@@ -111,7 +111,7 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
             draggable
             scale={scale}
             rotation={rotation}
-            src="/static/images/stripe.svg"
+            src="/static/images/unicorn.png"
             x={coordinates?.x}
             y={coordinates?.y}
             offsetX={MASK_WIDTH / SCALE_FACTOR}

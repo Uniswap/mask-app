@@ -68,7 +68,7 @@ const Button = styled.button<ButtonProps>`
       }
 
       &:hover {
-        background-color: #de0000;
+        background-color: #ff8cc3;
       }
     `}
 

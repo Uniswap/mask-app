@@ -78,7 +78,7 @@ const Social: React.FC = () => {
   return (
     <Wrapper>
       <Copy>
-        {"Powered by "}
+        {"Forked from "}
         <a href="https://stake.fish/" target="_block">
           stakefish
         </a>

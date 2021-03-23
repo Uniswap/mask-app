@@ -3,13 +3,17 @@ import { Grid } from "react-styled-flexboxgrid"
 import styled from "styled-components"
 import { rem } from "polished"
 
+const StyledLogo = styled.img`
+  height: 60px;
+`
+
 const Header: React.FC = () => {
   return (
     <Wrapper>
       <Grid>
         <Logo href="/">
-          <img src="/static/images/logo.svg" alt="OPTIMISM MASK" />
-          <span>Optimism Mask</span>
+          <StyledLogo src="/static/images/uni-logo.svg" alt="V3 MASK" />
+          <span>V3 Mask</span>
         </Logo>
       </Grid>
     </Wrapper>

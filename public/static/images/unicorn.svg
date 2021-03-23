@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="799px" height="299px" viewBox="0 0 799 299" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="HelveticaNeue-Italic, Helvetica Neue" font-size="280" font-style="italic" font-weight="normal">
+        <g id="Group" transform="translate(52.000000, -346.000000)" fill="#FFFFFF">
+            <text id="🦄">
+                <tspan x="179" y="268"></tspan>
+                <tspan x="39" y="596" font-family="AppleColorEmoji, Apple Color Emoji">🦄</tspan>
+                <tspan x="319" y="596"> </tspan>
+            </text>
+            <text id="🦄">
+                <tspan x="480" y="279"></tspan>
+                <tspan x="340" y="607" font-family="AppleColorEmoji, Apple Color Emoji">🦄</tspan>
+                <tspan x="620" y="607"> </tspan>
+            </text>
+        </g>
+    </g>
+</svg>

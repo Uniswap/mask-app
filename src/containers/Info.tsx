@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { rem } from "polished"
 
 import Button, { ButtonColor, ButtonSize } from "../components/Button"
-import { IconInfo, IconYoutube } from "../icons"
+import { IconInfo } from "../icons"
 
 interface Props {
   onDrop: (files: File[]) => void
@@ -18,21 +18,16 @@ const Info: React.FC<Props> = ({ onDrop }: Props) => {
     <Wrapper>
       <Row middle="xs" center="xs">
         <Col xs={12}>
-          <h1>Optimism Mask</h1>
+          <h1>Uniswap V3 Mask</h1>
           <p>
-            Do your part to support Optimistic Rollups <br />
-            for Ethereum's better scaling tomorrow! Upload <br />
-            your photo, choose your mask, and download <br />
+            Share your support for Uniswap V3. <br />
+            Upload your photo, choose your mask, and download <br />
             or share with the Twitter button!
           </p>
           <Links>
             <a href="https://optimism.io/" target="_blank" rel="noreferrer">
               <IconInfo />
-              <span>Optimistic rollups</span>
-            </a>
-            <a href="https://youtu.be/97DU_YgNPgE" target="_blank" rel="noreferrer">
-              <IconYoutube />
-              <span>Video explainer</span>
+              <span>V3 Blog Post</span>
             </a>
           </Links>
           <Divider />
@@ -96,10 +91,10 @@ const Links = styled.div`
     }
 
     &:hover {
-      color: #de0000;
+      color: #ff8cc3;
 
       svg path {
-        fill: #de0000;
+        fill: #ff8cc3;
       }
     }
   }
