@@ -25,7 +25,7 @@ const Info: React.FC<Props> = ({ onDrop }: Props) => {
             or share with the Twitter button!
           </p>
           <Links>
-            <a href="https://optimism.io/" target="_blank" rel="noreferrer">
+            <a href="https://uniswap.org/blog/uniswap-v3" target="_blank" rel="noreferrer">
               <IconInfo />
               <span>V3 Blog Post</span>
             </a>
