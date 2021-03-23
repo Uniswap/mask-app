@@ -50,13 +50,13 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
   const stageRef = useRef<any>(null)
 
   const [coordinates, setCoordinates] = useState<Vector2d>({
-    x: 243,
-    y: 160,
+    x: 263,
+    y: 180,
   })
 
   const [edit, setEdit] = useState<boolean>(false)
   const [rotation, setRotation] = useState<number>(CONTROLLER_ROTATION)
-  const [scale, setScale] = useState<Vector2d>({ x: CONTROLLER_SIZE, y: CONTROLLER_SIZE })
+  const [scale, setScale] = useState<Vector2d>({ x: CONTROLLER_SIZE * 1.1, y: CONTROLLER_SIZE * 1.1 })
   const [cursor, setCursor] = useState<Cursor>(Cursor.Default)
 
   const onDetect = async () => {
@@ -106,7 +106,7 @@ const Sandbox: React.FC<Props> = ({ file }: Props) => {
     <Wrapper preview={file} cursor={cursor}>
       <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef} className="stage">
         <Layer>
-          <Figure fit src={file || "/static/images/default.png"} />
+          <Figure fit src={file || "/static/images/default.jpg"} />
           <Figure
             draggable
             scale={scale}
