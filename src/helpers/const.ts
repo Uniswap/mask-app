@@ -1,4 +1,4 @@
-export const FILE_NAME = "optimistic-mask.png"
+export const FILE_NAME = "uni-mask.png"
 
 export const STAGE_WIDTH = 500
 export const STAGE_HEIGHT = 520

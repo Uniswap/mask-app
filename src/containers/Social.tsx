@@ -3,12 +3,7 @@ import styled from "styled-components"
 import { rem } from "polished"
 
 import Dropdown from "../components/Dropdown"
-import { IconTwitter, IconTelegram, IconInstagram } from "../icons"
-
-interface LinkProps {
-  href?: string
-  target?: string
-}
+import { IconTwitter } from "../icons"
 
 const Wrapper = styled.div`
   margin-bottom: ${rem(30)};
@@ -36,18 +31,6 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-`
-
-const SocialLink = styled.a<LinkProps>`
-  margin: 0 ${rem(5)};
-
-  &:first-child {
-    margin-left: 0 !important;
-  }
-
-  @media all and (max-width: 767px) {
-    margin: 0 8px;
   }
 `
 
@@ -88,12 +71,6 @@ const Social: React.FC = () => {
         </a>
       </Copy>
       <List>
-        <SocialLink href="https://t.me/stakefish" target="_block">
-          <IconTelegram />
-        </SocialLink>
-        <SocialLink href="https://instagram.com/stakedotfish" target="_block">
-          <IconInstagram />
-        </SocialLink>
         <Dropdown
           title={<IconTwitter />}
           data={[

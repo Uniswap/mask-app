@@ -18,8 +18,8 @@ const theme = {
     },
   },
   font: {
-    base: "'Muli', sans-serif",
-    headings: "'Muli', sans-serif",
+    base: "'Inter', sans-serif",
+    headings: "'Inter', sans-serif",
   },
   fontSize: {
     base: 16,

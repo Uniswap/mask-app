@@ -30,7 +30,6 @@ const Info: React.FC<Props> = ({ onDrop }: Props) => {
               <span>V3 Blog Post</span>
             </a>
           </Links>
-          <Divider />
           <UploadWrapper>
             <div>
               <Button $color={ButtonColor.White} $size={ButtonSize.Lg} {...getRootProps()}>
@@ -102,17 +101,6 @@ const Links = styled.div`
   @media all and (max-width: 767px) {
     margin-bottom: 24px;
     padding-bottom: 0;
-  }
-`
-
-const Divider = styled.div`
-  border-bottom: 1px solid ${(props) => props.theme.colors.dark};
-  width: ${rem(90)};
-  margin: ${rem(30)} auto;
-  margin: 3vh auto;
-
-  @media all and (max-width: 767px) {
-    display: none;
   }
 `
 

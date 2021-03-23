@@ -13,7 +13,7 @@ const Header: React.FC = () => {
       <Grid>
         <Logo href="/">
           <StyledLogo src="/static/images/uni-logo.svg" alt="V3 MASK" />
-          <span>V3 Mask</span>
+          <span>UNI Mask</span>
         </Logo>
       </Grid>
     </Wrapper>
